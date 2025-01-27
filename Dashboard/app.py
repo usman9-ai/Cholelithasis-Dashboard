@@ -125,7 +125,7 @@ def eda_page():
 
 def model_page():
     st.title("Model Evaluation")
-    test_data = pd.read_excel(r'\test_data.xlsx')  
+    test_data = pd.read_excel(r'test_data.xlsx')  
 
 
     # encode the target variable
