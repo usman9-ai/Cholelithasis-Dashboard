@@ -11,7 +11,7 @@ st.set_page_config(layout="wide")
 
 # Load Dataset
 def load_data():
-    data = pd.read_excel(r'Model Training/colelithiasis_dataset.xlsx')  # Update with your dataset file path
+    data = pd.read_excel(r'colelithiasis_dataset.xlsx')  # Update with your dataset file path
     data.drop('Patient No.', axis=1, inplace=True)
     return data
 
@@ -51,7 +51,7 @@ def stats_page():
 
     # apply ordinal encoding to the categorical columns
     categorical_columns = ['Gender','Family history','Obese/non obese']
-    encoder = joblib.load('Model Training\encoder.pkl')
+    encoder = joblib.load('\encoder.pkl')
     data[categorical_columns] = encoder.transform(data[categorical_columns])
     
     correlation = data.corr()
@@ -125,7 +125,7 @@ def eda_page():
 
 def model_page():
     st.title("Model Evaluation")
-    test_data = pd.read_excel(r'Model Training\test_data.xlsx')  
+    test_data = pd.read_excel(r'\test_data.xlsx')  
 
 
     # encode the target variable
@@ -133,7 +133,7 @@ def model_page():
 
     # apply ordinal encoding to the categorical columns
     categorical_columns = ['Gender','Family history','Obese/non obese']
-    encoder = joblib.load('Model Training\encoder.pkl')
+    encoder = joblib.load('\encoder.pkl')
 
     X = test_data.drop( columns=['Health_status'])
     X[categorical_columns] = encoder.transform(X[categorical_columns])
@@ -141,7 +141,7 @@ def model_page():
 
     # apply standard scalling to numberical features in X
     numerical_columns = [col_name for col_name in X.columns if col_name not in categorical_columns]
-    scaler = joblib.load('Model Training\scaler.pkl')  
+    scaler = joblib.load('\scaler.pkl')  
     X[numerical_columns] = scaler.transform(X[numerical_columns])
 
     # Model Selection
@@ -152,19 +152,19 @@ def model_page():
     # Load pre-trained model
     model = None
     if model_choice == "SVM - Linear":
-        model = joblib.load('Model Training\svm_model_linear.pkl')
+        model = joblib.load('\svm_model_linear.pkl')
     elif model_choice == "SVM - Polynomial":
-        model = joblib.load('Model Training\svm_model_poly.pkl')
+        model = joblib.load('\svm_model_poly.pkl')
     elif model_choice == "SVM - RBF":
-        model = joblib.load('Model Training\svm_model_rbf.pkl')
+        model = joblib.load('\svm_model_rbf.pkl')
     elif model_choice == "Random Forest":
-        model = joblib.load('Model Training\rf_model.pkl')
+        model = joblib.load('\rf_model.pkl')
     elif model_choice == "Random Forest Boosted":
-        model = joblib.load('Model Training\rf_boosted.pkl')
+        model = joblib.load('\rf_boosted.pkl')
     elif model_choice == "Logistic Regression":
-        model = joblib.load('Model Training\lr_model.pkl')
+        model = joblib.load('\lr_model.pkl')
     elif model_choice == "GDA":
-        model = joblib.load('Model Training\gda.pkl')
+        model = joblib.load('\gda.pkl')
 
 
     if model:
@@ -211,19 +211,19 @@ def prediction_page():
     # Load pre-trained model
     model = None
     if model_choice == "SVM - Linear":
-        model = joblib.load('Model Training\svm_model_linear.pkl')
+        model = joblib.load('\svm_model_linear.pkl')
     elif model_choice == "SVM - Polynomial":
-        model = joblib.load('Model Training\svm_model_poly.pkl')
+        model = joblib.load('\svm_model_poly.pkl')
     elif model_choice == "SVM - RBF":
-        model = joblib.load('Model Training\svm_model_rbf.pkl')
+        model = joblib.load('\svm_model_rbf.pkl')
     elif model_choice == "Random Forest":
-        model = joblib.load('Model Training\rf_model.pkl')
+        model = joblib.load('\rf_model.pkl')
     elif model_choice == "Random Forest Boosted":
-        model = joblib.load('Model Training\rf_boosted.pkl')
+        model = joblib.load('\rf_boosted.pkl')
     elif model_choice == "Logistic Regression":
-        model = joblib.load('Model Training\lr_model.pkl')
+        model = joblib.load('\lr_model.pkl')
     elif model_choice == "GDA":
-        model = joblib.load('Model Training\gda.pkl')
+        model = joblib.load('\gda.pkl')
 
     with st.form(key="health_data_form"):
         col1, col2, col3, col4 = st.columns(4)
@@ -273,11 +273,11 @@ def prediction_page():
         categorical_columns = ['Gender','Family history','Obese/non obese']
         numerical_columns = [col_name for col_name in data.columns if col_name not in categorical_columns]
         # Encoding categorical data
-        encoder = joblib.load('Model Training\encoder.pkl')  
+        encoder = joblib.load('\encoder.pkl')  
         data[categorical_columns] = encoder.transform(data[categorical_columns])
 
         # Scaling the numeric features
-        scaler = joblib.load('Model Training\scaler.pkl')
+        scaler = joblib.load('\scaler.pkl')
         data[numerical_columns] = scaler.transform(data[numerical_columns])
 
     
