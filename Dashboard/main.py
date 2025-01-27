@@ -11,7 +11,7 @@ st.set_page_config(layout="wide")
 
 # Load Dataset
 def load_data():
-    data = pd.read_excel('Model Training\colelithiasis_dataset.xlsx')  # Update with your dataset file path
+    data = pd.read_excel(r'Model Training/colelithiasis_dataset.xlsx')  # Update with your dataset file path
     data.drop('Patient No.', axis=1, inplace=True)
     return data
 
