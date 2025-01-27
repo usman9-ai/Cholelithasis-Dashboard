@@ -7,7 +7,11 @@ import joblib
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from plotly import graph_objects as go
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    layout="wide",
+    page_title="Colelithiasis",
+    page_icon="logo.png"
+    )
 
 # Load Dataset
 def load_data():
@@ -172,7 +176,7 @@ def model_page():
         y_pred = model.predict(X)
         col1, col2 = st.columns(2)
         with col1:
-            st.subheader("### Predictions on the Test Data:")
+            st.subheader("Predictions on the Test Data:")
             st.dataframe(pd.DataFrame({"Actual": y, "Predicted": y_pred}))
 
         with col2:
