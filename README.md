@@ -1,6 +1,6 @@
 # Cholelithiasis Health Status Prediction Dashboard
 
-![Project Image](./A_modern_medical_AI_dashboard_concept_for_predicti.png)
+![Project Image](./thumbnail.webp)
 
 ## Overview
 A machine learning-based dashboard for predicting health status in **cholelithiasis (gallstone disease) patients**. This project includes data preprocessing, model training, and evaluation using various classification algorithms to assess patient risk and health outcomes.
