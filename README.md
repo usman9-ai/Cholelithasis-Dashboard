@@ -1,4 +1,4 @@
-# Cholelithiasis Dashboard
+# Cholelithiasis (Gallstone) Disease Prediction Dashboard
 
 This repository provides tools and models for analyzing and predicting health outcomes related to cholelithiasis (gallstone disease). It includes datasets, machine learning models, and Jupyter notebooks for data processing, model training, and evaluation.
 
